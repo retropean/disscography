@@ -1,5 +1,5 @@
 /**
- * AlbumController
+ * TraqController
  *
  * @module      :: Controller
  * @description	:: A set of functions called `actions`.
@@ -16,65 +16,71 @@
  */
 
 module.exports = {
-    new: function(req, res) {
-    res.view();
+      new: function(req, res) {
+    Album.find(function(err, albums) {
+  if(err) return next(err);
+    res.view({
+      albums: albums
+    });
+  });
 },
 
-  index: function(req, res, next) {
-        Album.find(function(err, albums) {
+
+    index: function(req, res, next) {
+        Traq.find(function(err, traq) {
             if(err) return next(err);
             res.view({
-                albums: albums
+                traq: traq
         });
     });
   },
-  
+
   show: function(req, res, next) {
-        Album.findOne(req.param('id'), function(err, record) {
+        Traq.findOne(req.param('id'), function(err, record) {
             if(err) return next(err);
             res.view({
-                album: record
+                Traq: record
         });
     });
   },
 
   edit: function(req, res, next) {
-        Album.findOne(req.param('id'), function(err, record) {
+        Traq.findOne(req.param('id'), function(err, record) {
             if(err) return next(err);
             res.view({
-                album: record
+                traq: record
         });
     });
   },
 
   create: function(req, res, next) {
-      Album.create(req.body, function(err, album) {
+      Traq.create(req.body, function(err, traq) {
             if(err) return next(err);
-        console.log(album);
-            res.redirect('/album/show/' + album['id']);
+        console.log(traq);
+            res.redirect('/traq');
     });
   },
 
   delete: function(req, res, next) {
-        Album.destroy(req.param('id'), function(err) {
+        Traq.destroy(req.param('id'), function(err) {
             if(err) return next(err);
             res.redirect('/album');
     });
   },
 
   update: function(req, res, next) {
-        Album.update(req.param('id'), req.body, function(err) {
+        Traq.update(req.param('id'), req.body, function(err) {
           if(err) return next(err);
-          res.redirect('/album/show/' + req.param('id'));
+          res.redirect('/album');
     });
   },
 
 
   /**
    * Overrides for the settings in `config/controllers.js`
-   * (specific to AlbumController)
+   * (specific to TraqController)
    */
   _config: {}
 
-  
+
 };

@@ -1,0 +1,22 @@
+<% layout('../layout') -%>
+
+<h1>ALL YOUR TRAXXX PLAYAH</h1>
+
+<ul>
+    <% for(i in traq) {%>
+        <li style="padding-bottom: 50px">
+            <div>
+                <em><%= traq[i]['title'] %></em> runtime <%= traq[i]['runtime'] %><br />
+              <audio controls>
+  <source src="<%= traq[i]['audio']%>">
+ </audio>
+
+
+            </div>
+        </li>
+    <% } %>
+</ul>
+
+
+<a href="/traq/new/">New TRAQ</a><br>
+<a href="/album/">Check yo Albumz</a><br>
