@@ -2,7 +2,7 @@
     "name": "disscogs",
     "private": true,
     "version": "0.0.0",
-    "description": "a Sails application",
+    "description": "diss cography for hating bro",
     "dependencies": {
         "sails": "0.9.8",
         "grunt": "0.4.1",

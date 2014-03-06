@@ -7,13 +7,28 @@
  */
 
 module.exports = {
-
   attributes: {
-  	
-  	/* e.g.
-  	nickname: 'string'
-  	*/
-    
+  	title: {
+        type: 'string',
+        required: true
+    },
+    artist: {
+        type: 'string',
+        required: true
+    },
+    year: {
+        type: 'integer',
+        max: 2014,
+        required: true
+    },
+    label: {
+        type: 'string',
+        defaultsTo: ''
+    },
+    genre: 'string',
+    album_cover: {
+        type: 'url',
+        defaultsTo: 'http://cdn.ebaumsworld.com/mediaFiles/picture/428737/875400.jpg'
+    }
   }
-
 };

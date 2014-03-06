@@ -16,8 +16,50 @@
  */
 
 module.exports = {
-    
+    new: function(req, res) {
+    res.view();
+},
+
+  index: function(req, res, next) {
+        Album.find(function(err, albums) {
+            if(err) return next(err);
+            res.view({
+                albums: albums
+        });
+    });
+  },
   
+  show: function(req, res, next) {
+        Album.findOne(req.param('id'), function(err, record) {
+            if(err) return next(err);
+            res.view({
+                album: record
+        });
+    });
+  },
+
+  edit: function(req, res, next) {
+        Album.findOne(req.param('id'), function(err, record) {
+            if(err) return next(err);
+            res.view({
+                album: record
+        });
+    });
+  },
+
+  delete: function(req, res, next) {
+        Album.destroy(req.param('id'), function(err) {
+            if(err) return next(err);
+            res.redirectTo('/album');
+    });
+  },
+
+  update: function(req, res, next) {
+        Album.update(req.param('id'), function(err) {
+            if(err) return next(err);
+            res.redirectTo('/album/show' + req.param('id'));
+    });
+  },
 
 
   /**

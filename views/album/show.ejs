@@ -1,0 +1,11 @@
+<% layout('../layout') -%>
+
+<h1><%= album['title'] %>, by <%= album['artist'] %><br />
+in the year <%= album['year'] %></h1>
+
+<div><img src="<%= album['album_cover'] %>" width="400"></div>
+<div>Released by: <%= album['label'] %></div>
+<div>Genre: <%= album['genre'] %></div>
+
+<a href="/album/edit/<%= album['id'] %>">Edit this album</a>
+<a href="/album/delete/<%= album['id'] %>">Delete this album</a>
